@@ -1,0 +1,22 @@
+.productsList {
+  padding: 3rem 0.5rem 2rem;
+}
+
+.productsListTitle {
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: black;
+}
+.darkTheme .productsListTitle {
+  color: var(--bs-gray-500);
+}
+
+.productCardsList {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}

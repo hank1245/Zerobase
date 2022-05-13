@@ -16,7 +16,7 @@ code {
     monospace;
 }
 
-.App {
+.App.darkTheme {
   background-color: #212529;
   min-height: 100vh;
 }
