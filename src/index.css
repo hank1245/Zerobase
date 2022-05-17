@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+html, body {
+  height: 100vh;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,5 +25,10 @@ code {
 }
 
 .carousel img{
-  height: 60vh;
+  height: 700px;
+}
+@media (max-width: 1024px) {
+  .carousel img{
+    height: 220px;
+  }
 }

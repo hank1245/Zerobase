@@ -2,6 +2,7 @@ import { Container,Navbar,Nav,Form,FormControl } from "react-bootstrap";
 import { useState } from "react";
 import {BiSun, BiMoon, BiShoppingBag} from 'react-icons/bi';
 import {useDispatch} from "react-redux";
+import './style/header.css';
 
 function Header() {
   const [mode, setMode] = useState(true);
@@ -24,13 +25,12 @@ function Header() {
   <>
     <Navbar collapseOnSelect expand="lg" bg={theme} variant={theme} sticky="top">
       <Container>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         {/* <div style={{paddingLeft : '200px'}}> */}
-        <h1 style={{margin: 0, display: 'flex', alignItems: 'center'}}>
+        <h1 className="brandLogo">
           <Navbar.Brand href="/">React Shop</Navbar.Brand>
         </h1>
         {/* </div> */}
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="fashion">패션</Nav.Link>
             <Nav.Link href="accessory">액세서리</Nav.Link>
@@ -48,11 +48,12 @@ function Header() {
               aria-label="Search"
               />
             </Form>
-            <div style={{paddingRight : '150px'}}>
+            <div style={{marginLeft : '0.25rem'}}>
               <BiShoppingBag size="36" color="white"/>
             </div>
           </Nav>
-        </Navbar.Collapse>
+        {/* <Navbar.Collapse id="responsive-navbar-nav">
+        </Navbar.Collapse> */}
       </Container>
     </Navbar>
   </>

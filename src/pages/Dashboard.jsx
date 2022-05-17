@@ -24,7 +24,7 @@ function Dashboard() {
   return (
     <>
       <CarouselComponent/>
-      <section style={{margin: '2.5rem auto', maxWidth: '1360px', minWidth: '1280px'}}>
+      <section style={{margin: '2.5rem auto'}}>
         <ProductCardList category={'패션'} products={maxFourProducts(fashionProducts)} />
         <ProductCardList category={'액세서리'} products={maxFourProducts(accessoryProducts)} />
         <ProductCardList category={'디지털'} products={maxFourProducts(digitalProducts)} />
