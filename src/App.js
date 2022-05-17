@@ -1,20 +1,21 @@
 import './App.css';
-import Header from './components/Header';
 import { Routes, Route,} from 'react-router-dom'
+import {useRecoilValue} from 'recoil';
+import {darkModeState} from './atoms/darkMode';
+import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
-import Fashion from './pages/Fashion';
+import CategoryPage from './pages/CategoryPage';
 import ErrorPage from './pages/ErrorPage';
-import {useSelector} from "react-redux";
 
 function App() {
-  const theme = useSelector(state => state['theme']);
+  const isDarkMode = useRecoilValue(darkModeState)
 
   return (
-    <div className={`App ${theme}`}>
+    <div className={isDarkMode ? 'App_dark' : 'App_light'}>
       <Header/>
       <Routes>
         <Route path ='/' element={<Dashboard/>}/>
-        <Route path =':category' element={<Fashion/>}/>
+        <Route path =':category' element={<CategoryPage/>}/>
         <Route path = '*' element={<ErrorPage/>}/>
       </Routes>
     </div>

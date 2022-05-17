@@ -1,36 +1,25 @@
 import { Container,Navbar,Nav,Form,FormControl } from "react-bootstrap";
-import { useState } from "react";
 import {BiSun, BiMoon, BiShoppingBag} from 'react-icons/bi';
-import {useDispatch} from "react-redux";
+import {useRecoilState} from 'recoil';
+import {darkModeState} from "../atoms/darkMode";
 import './style/header.css';
 
 function Header() {
-  const [mode, setMode] = useState(true);
-  const [theme, setTheme] = useState('dark');
-
-  const dispatch = useDispatch();
+  const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
 
   const toggleMode = () => {
-    setMode(!mode)
-    if (mode) {
-      dispatch({type: 'light'});
-      setTheme('light');
-    } else {
-      dispatch({type: 'dark'});
-      setTheme('dark');
-    }
-  }
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('reactShopIsDarkMode', !isDarkMode);
+  };
 
   return (
   <>
-    <Navbar collapseOnSelect expand="lg" bg={theme} variant={theme} sticky="top">
+    <Navbar collapseOnSelect expand="lg" bg={isDarkMode ? "dark" : "light"} variant={isDarkMode ? "dark" : "light"} sticky="top">
       <Container>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        {/* <div style={{paddingLeft : '200px'}}> */}
         <h1 className="brandLogo">
           <Navbar.Brand href="/">React Shop</Navbar.Brand>
         </h1>
-        {/* </div> */}
           <Nav className="me-auto">
             <Nav.Link href="fashion">패션</Nav.Link>
             <Nav.Link href="accessory">액세서리</Nav.Link>
@@ -38,7 +27,8 @@ function Header() {
           </Nav>
           <Nav>
             <div className="toggleButton" onClick={toggleMode} style={{marginRight : '10px', cursor: 'pointer'}}>
-              {mode ? (<BiSun size="36" color="white"/>) : (<BiMoon size="36" color="white"/>)}
+            <BiSun className={`sun ${isDarkMode ? " active" : ""}`} size="28" fill="white"/>
+            <BiMoon className={`moon ${isDarkMode ? "" : " active"}`} size="28" fill="black"/>
             </div>
             <Form className="d-flex">
               <FormControl
@@ -49,11 +39,9 @@ function Header() {
               />
             </Form>
             <div style={{marginLeft : '0.25rem'}}>
-              <BiShoppingBag size="36" color="white"/>
+              <BiShoppingBag size="36" color={isDarkMode ? "white" : "black"}/>
             </div>
           </Nav>
-        {/* <Navbar.Collapse id="responsive-navbar-nav">
-        </Navbar.Collapse> */}
       </Container>
     </Navbar>
   </>

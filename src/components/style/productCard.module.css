@@ -10,7 +10,10 @@
   overflow: hidden;
   border: 1px solid var(--bs-gray-300);
 }
-.darkTheme .productCard {
+.productCard:hover img {
+  transform: scale(1.2);
+}
+.App_dark.productCard {
   border-color: var(--bs-gray-800);
 }
 
@@ -38,7 +41,7 @@
   background-color: var(--bs-gray-200);
   color: black;
 }
-.darkTheme .productCardInfoBox {
+.App_dark .productCardInfoBox {
   background-color: var(--bs-gray-700);
   color: var(--bs-gray-500);
 }

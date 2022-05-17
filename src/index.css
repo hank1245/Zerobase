@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  transition-duration: 0.3s;
 }
 html, body {
   height: 100vh;
@@ -19,8 +20,17 @@ code {
     monospace;
 }
 
-.App.darkTheme {
-  background-color: #212529;
+.App_dark {
+  background-color: rgb(41, 45, 62);
+  color: white;
+  min-height: 100vh;
+}
+.App_dark * {
+  color: var(--bs-gray-500);
+}
+.App_light {
+  background-color: white;
+  color: black;
   min-height: 100vh;
 }
 
