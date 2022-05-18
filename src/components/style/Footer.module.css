@@ -1,0 +1,32 @@
+.footer {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    color: #A6ADBA;
+    background-color: #242933;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.creditcard{
+    width:350px;
+    height: 24px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 35px;
+}
+.creditcard img {
+    height:28px;
+}
+
+.sns {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+}

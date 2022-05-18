@@ -1,0 +1,17 @@
+.caption {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+}
+
+.caption > h3{
+    font-size: 2.8rem;
+    color: white;
+    font-weight: 800;
+}
+
+.caption > p {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}

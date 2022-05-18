@@ -1,0 +1,153 @@
+.navbar {
+  min-height: 4rem;
+  padding: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+  padding: 0;
+  flex-wrap: wrap;
+  max-width: 100% !important;
+}
+
+.brandLogo {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  transition: flex 0s;
+}
+.navbar-brand {
+  padding: 0 !important;
+  margin: 0 0.5rem !important;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.navbar-toggler {
+  display: inline-flex !important;
+}
+
+.me-auto.navbar-nav {
+  margin-left: 0.5rem;
+}
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+}
+.navbar-nav:last-child {
+  padding: 0 0.5rem;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.75rem !important;
+  height: 2rem;
+  min-height: 2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+}
+.navbar-nav .nav-link:focus-visible {
+  outline: black solid 2px;
+}
+.App_dark .navbar-nav .nav-link {
+  color: white !important;
+}
+.App_dark .navbar-nav .nav-link:hover {
+  background-color: var(--bs-gray-700);
+}
+.App_light .navbar-nav .nav-link {
+  color: black !important;
+}
+.App_light .navbar-nav .nav-link:hover {
+  background-color: var(--bs-gray-300);
+}
+
+.App_dark .navbar-nav form input {
+  background-color: var(--bs-gray-700);
+  color: white;
+  border-width: 0;
+}
+.App_dark .navbar-nav form input::placeholder {
+  color: var(--bs-gray-500);
+}
+.App_light .navbar-nav form input {
+  background-color: var(--bs-gray-300);
+  color: black;
+  border-width: 0;
+}
+.App_light .navbar-nav form input::placeholder {
+  color: var(--bs-gray-500);
+}
+
+.toggleButton {
+  position: relative;
+  margin-right: 1rem !important;
+  width: 28px;
+  height: 28px;
+}
+.toggleButton svg {
+  position: absolute;
+  fill: transparent;
+}
+.toggleButton .sun.active {
+  transform: rotate(135deg);
+  fill: white;
+}
+.toggleButton .sun {
+  transform: rotate(0deg);
+}
+.toggleButton .moon.active {
+  transform: rotate(0deg);
+  fill: black;
+}
+.toggleButton .moon {
+  transform: rotate(135deg);
+}
+
+@media (max-width: 767px) {
+  .brandLogo {
+    flex: 1;
+  }
+  .me-auto.navbar-nav {
+    display: none !important;
+  }
+}
+@media (min-width: 1025px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+@media (min-width: 1280px) {
+  .navbar .container {
+    max-width: 1280px !important;
+  }
+}
+@media (min-width: 1360px) {
+  .navbar .container {
+    max-width: 1360px !important;
+  }
+}
+
+.searchList {
+  position:absolute;
+  top:63px;
+  right:10px;
+  background-color: #292D3E;
+}
+
+.searchList > li {
+  width: 250px;
+  list-style: none;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.searchList a {
+  text-decoration: none;
+}
