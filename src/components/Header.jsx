@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
-import { Container,Navbar,Nav,Form,FormControl } from "react-bootstrap";
 import {BiSun, BiMoon, BiShoppingBag} from 'react-icons/bi';
+import {GiHamburgerMenu} from 'react-icons/gi';
+import {AiOutlineSearch} from 'react-icons/ai';
 import {useRecoilState} from 'recoil';
 import {darkModeState} from "../atoms/darkMode";
-import './style/header.css';
-import axios from 'axios'
-import {Link} from 'react-router-dom'
-import ShoppingCount from "./ShoppingCount";
+import styles from './style/header.module.css';
+import {useState, useEffect} from 'react';
+import {Link} from "react-router-dom";
+import {CategoryKR} from "../constants/category";
+import axios from 'axios';
+import ShoppingCount from './ShoppingCount'
 
 function Header() {
   const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
+  const [isSearchActive, setIsSearchActive] = useState(false);
   const [productData, setProductData] = useState()
   const [searchInput, setSearchInput] = useState('')
 
@@ -26,34 +29,39 @@ function Header() {
     setIsDarkMode(!isDarkMode);
     localStorage.setItem('reactShopIsDarkMode', !isDarkMode);
   };
+  const toggleSearchActive = () => {
+    setIsSearchActive(!isSearchActive);
+  }
 
   return (
   <>
-    <Navbar collapseOnSelect expand="lg" bg={isDarkMode ? "dark" : "light"} variant={isDarkMode ? "dark" : "light"} sticky="top">
-      <Container>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <h1 className="brandLogo">
-          <Navbar.Brand href="/">React Shop</Navbar.Brand>
+    <nav className={(isDarkMode ? styles.App_dark : styles.App_light) + " " +  styles.navbar}>
+      <div className={styles.container}>
+        <button aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation" className={styles.navbarToggler}>
+          <GiHamburgerMenu size="24" fill={isDarkMode ? "white" : "black"}/>
+        </button>
+        <h1 className={styles.brandLogo}>
+          <a href="/" className={styles.navbarBrand}>React Shop</a>
         </h1>
-          <Nav className="me-auto">
-            <Nav.Link href="/products/fashion">패션</Nav.Link>
-            <Nav.Link href="/products/accessory">액세서리</Nav.Link>
-            <Nav.Link href="/products/digital">디지털</Nav.Link>
-          </Nav>
-          <Nav>
-            <div className="toggleButton" onClick={toggleMode} style={{marginRight : '10px', cursor: 'pointer'}}>
-            <BiSun className={`sun ${isDarkMode ? " active" : ""}`} size="28" fill="white"/>
-            <BiMoon className={`moon ${isDarkMode ? "" : " active"}`} size="28" fill="black"/>
-            </div>
-            <Form className="d-flex">
-              <FormControl
-              type="search"
-              placeholder="검색"
-              className="me-2"
-              aria-label="Search"
-              onChange={(e) => setSearchInput(e.target.value)}/>
-            </Form>
-            <ul className="searchList">
+        <div className={styles.navbarNav + " " + styles.categoryArea}>
+          {Object.entries(CategoryKR).map((category) => (
+            <Link to={`/${category[0]}`} key={category[0]} className={styles.navLink}>
+              {category[1]}
+            </Link>
+          ))}
+        </div>
+        <div className={styles.navbarNav + " " + styles.rightArea}>
+          <div className={styles.toggleButton} onClick={toggleMode}>
+            <BiSun className={styles.sun + (isDarkMode ? " " + styles.active : "")} size="26" fill="white"/>
+            <BiMoon className={styles.moon + (isDarkMode ? "" : " " + styles.active)} size="26" fill="black"/>
+          </div>
+          <button className={styles.searchBtn} onClick={toggleSearchActive}>
+            <AiOutlineSearch size="24" fill={isDarkMode ? "white" : "black"}/>
+          </button>
+          <form className={styles.searchArea + " " + (isSearchActive ? styles.active : styles.notActive)}>
+            <input placeholder="검색" aria-label="Search" type="search" className={styles.searchBox} onChange={(e) => setSearchInput(e.target.value)}/>
+          </form>
+          <ul className={styles.searchList}>
               {productData && productData.filter((val) => {
                 if(searchInput == "") {
                   return false
@@ -64,13 +72,13 @@ function Header() {
                 <li key={product.id}><Link to={`/products/${product.id}`}>{product.title}</Link></li>
               ))}
             </ul>
-            <div className="shopping_list">
-              <BiShoppingBag size="36" color={isDarkMode ? "white" : 'black'}/>
-              <ShoppingCount count={0}/>
-            </div>
-          </Nav>
-      </Container>
-    </Navbar>
+          <Link to={"cart"} key={"cart"} className={styles.cartIcon}>
+            <BiShoppingBag size="24" fill={isDarkMode ? "white" : "black"}/>
+            <ShoppingCount count={0}/>
+          </Link>
+        </div>
+      </div>
+    </nav>
   </>
   )
 }

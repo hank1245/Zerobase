@@ -16,8 +16,8 @@ function App() {
     <div className={isDarkMode ? 'App_dark' : 'App_light'}>
       <Header/>
       <Routes>
-        <Route path ='/' element={<Dashboard/>}/>
-        <Route path ='products/:category' element={<CategoryPage/>}/>
+        <Route path= '/' element={<Dashboard/>}/>
+        <Route path= '/:category' element={<CategoryPage/>}/> 
         <Route path = '*' element={<ErrorPage/>}/>
       </Routes>
     </div>

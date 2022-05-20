@@ -20,11 +20,10 @@ function CategoryPage() {
     fetchData().then(p => {
       setCategodyProducts(p.filter((product) => Category[product['category']] === category));
     });
-  }, []);
+  }, [category]);
   
   return (
-    <>
-     <section className={styles.categoryContainer}>
+    <section className={styles.categoryContainer}>
       <div className={styles.breadcrumbs}>
         <ul>
           <li>홈</li>
@@ -33,7 +32,6 @@ function CategoryPage() {
       </div>
       <ProductCardList category={categoryKR} products={categoryProducts} />
     </section>
-    </>
   )
 }
 

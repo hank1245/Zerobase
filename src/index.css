@@ -33,7 +33,6 @@ code {
   background-color: white;
   color: black;
   min-height: 100vh;
-  padding-bottom: 300px;
 }
 
 .carousel img{
@@ -41,6 +40,6 @@ code {
 }
 @media (max-width: 1024px) {
   .carousel img{
-    height: 500px;
+    height: 220px;
   }
 }

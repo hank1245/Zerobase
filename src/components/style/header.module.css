@@ -1,0 +1,286 @@
+.navbar * {
+  --hover-dark-bgc: hsl(220, 13%, 69%, 0.2);
+  --hover-light-bgc: hsl(215, 28%, 17%, 0.2);
+}
+.navbar a {
+  text-decoration: none;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  min-height: 4rem;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.App_dark.navbar {
+  background-color: rgba(var(--bs-dark-rgb), 1);
+}
+
+.navbar .container {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbarToggler {
+  display: inline-flex;
+  background-color: transparent;
+  border: 0;
+  height: 3rem;
+  padding: 0;
+  align-items: center;
+}
+
+.brandLogo {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  transition: flex 0s;
+}
+.navbarBrand {
+  color: black;
+  padding: 0;
+  margin: 0 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.navbarBrand:active,
+.navbarBrand:hover {
+  color: inherit;
+}
+.App_dark .navbarBrand {
+  color: white;
+}
+
+.navbarNav {
+  display: flex;
+  flex-direction: row;
+}
+.navbarNav.categoryArea {
+  margin-left: 0.5rem;
+  flex: 1;
+}
+
+.navbarNav .navLink {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.75rem;
+  height: 2rem;
+  min-height: 2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+}
+.navbarNav .navLink:focus-visible {
+  outline: black solid 2px;
+}
+.App_dark .navbarNav .navLink {
+  color: white;
+}
+.App_dark .navbarNav .navLink:hover {
+  background-color: var(--hover-dark-bgc);
+}
+.App_light .navbarNav .navLink {
+  color: black;
+}
+.App_light .navbarNav .navLink:hover {
+  background-color: var(--hover-light-bgc);
+}
+
+.navbarNav.rightArea {
+  padding: 0 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.toggleButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  border-radius: 0.1rem;
+  flex-shrink: 0;
+}
+.toggleButton:focus-visible {
+  outline: black solid 2px;
+}
+.toggleButton svg {
+  position: absolute;
+  fill: transparent;
+}
+.toggleButton .sun.active {
+  transform: rotate(135deg);
+  fill: white;
+}
+.toggleButton .sun {
+  transform: rotate(0deg);
+}
+.toggleButton .moon.active {
+  transform: rotate(0deg);
+  fill: black;
+}
+.toggleButton .moon {
+  transform: rotate(135deg);
+}
+
+.searchBtn {
+  background-color: transparent;
+  border: 0;
+  width: 2.5rem;
+  height: 3rem;
+  display: none;
+  border-radius: 0.5rem;
+}
+.App_dark .searchBtn:hover {
+  background-color: var(--hover-dark-bgc);
+}
+.App_light .searchBtn:hover {
+  background-color: var(--hover-light-bgc);
+}
+
+.searchArea {
+  flex-wrap: nowrap;
+}
+.searchBox {
+  height: 3rem;
+  min-width: 226px;
+  width: 100%;
+  border-radius: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 2rem;
+}
+.searchBox:focus-visible {
+  outline: none;
+}
+.App_dark .searchBox {
+  background-color: rgba(75, 85, 99, 1);
+  color: white;
+  border-width: 0;
+}
+.App_dark .searchBox::placeholder {
+  color: var(--bs-gray-500);
+}
+.App_light .searchBox {
+  background-color: rgba(209, 213, 219, 1);
+  color: rgba(31, 41, 55, 1);
+  border-width: 0;
+}
+.App_light .searchBox::placeholder {
+  color: var(--bs-gray-500);
+}
+
+.cartIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.25rem;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+.App_dark .cartIcon:hover {
+  background-color: var(--hover-dark-bgc);
+}
+.App_light .cartIcon:hover {
+  background-color: var(--hover-light-bgc);
+}
+
+@media (max-width: 480px) {
+  .toggleButton {
+    margin-right: 0.5rem;
+  }
+  .searchBtn {
+    display: block;
+  }
+  .searchArea {
+    position: fixed;
+    z-index: 1021;
+    left: 0;
+    right: 0;
+    top: -3rem;
+    width: 100%;
+  }
+  .searchArea.active {
+    top: 4rem;
+  }
+  .searchBox {
+    border-radius: 0;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+  }
+  .notActive .searchBox {
+    background-color: transparent;
+    color: transparent;
+  }
+  .notActive .searchBox::placeholder {
+    color: transparent;
+  }
+  .cartIcon {
+    width: 2.5rem;
+  }
+}
+@media (max-width: 767px) {
+  .brandLogo {
+    flex: 1;
+  }
+  .navbarNav.categoryArea {
+    display: none;
+  }
+}
+@media (min-width: 1025px) {
+  .navbarToggler {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .navbar .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1360px) {
+  .navbar .container {
+    max-width: 1360px;
+  }
+}
+
+.searchList {
+  position:absolute;
+  top:63px;
+  right:10px;
+  background-color: #292D3E;
+}
+
+.searchList > li {
+  width: 250px;
+  list-style: none;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.searchList a {
+  text-decoration: none;
+}
+
+.shopping_list {
+  display: flex;
+  color: white;
+}
