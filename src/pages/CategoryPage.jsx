@@ -20,7 +20,7 @@ function CategoryPage() {
     fetchData().then(p => {
       setCategodyProducts(p.filter((product) => Category[product['category']] === category));
     });
-  }, []);
+  }, [category]);
   
   return (
     <section className={styles.categoryContainer}>
