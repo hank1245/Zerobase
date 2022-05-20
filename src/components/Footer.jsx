@@ -1,6 +1,7 @@
 import styles from './style/Footer.module.css'
 import {BsInstagram,BsFacebook,BsGithub} from 'react-icons/bs'
 import {BiCopyright} from 'react-icons/bi'
+
 function Footer() {
   return (
       <>

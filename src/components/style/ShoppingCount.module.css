@@ -1,0 +1,11 @@
+.counter {
+    background-color: red;
+    border-radius: 50%;;
+    color: white;
+    position: relative;
+    left: -15px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 1;
+}

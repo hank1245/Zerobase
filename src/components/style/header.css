@@ -151,3 +151,8 @@
 .searchList a {
   text-decoration: none;
 }
+
+.shopping_list {
+  display: flex;
+  color: white;
+}

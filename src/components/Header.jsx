@@ -6,6 +6,7 @@ import {darkModeState} from "../atoms/darkMode";
 import './style/header.css';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import ShoppingCount from "./ShoppingCount";
 
 function Header() {
   const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
@@ -63,8 +64,9 @@ function Header() {
                 <li key={product.id}><Link to={`/products/${product.id}`}>{product.title}</Link></li>
               ))}
             </ul>
-            <div style={{marginLeft : '0.25rem'}}>
-              <BiShoppingBag size="36" color={isDarkMode ? "white" : "black"}/>
+            <div className="shopping_list">
+              <BiShoppingBag size="36" color={isDarkMode ? "white" : 'black'}/>
+              <ShoppingCount count={0}/>
             </div>
           </Nav>
       </Container>
