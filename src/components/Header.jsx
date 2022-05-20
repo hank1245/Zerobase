@@ -32,12 +32,12 @@ function Header() {
         </h1>
         <div className={styles.navbarNav + " " + styles.categoryArea}>
           {Object.entries(CategoryKR).map((category) => (
-            <Link to={`${category[0]}`} key={category[0]} className={styles.navLink}>
+            <Link to={`/${category[0]}`} key={category[0]} className={styles.navLink}>
               {category[1]}
             </Link>
           ))}
         </div>
-        <div className={styles.navbarNav}>
+        <div className={styles.navbarNav + " " + styles.rightArea}>
           <div className={styles.toggleButton} onClick={toggleMode}>
             <BiSun className={styles.sun + (isDarkMode ? " " + styles.active : "")} size="26" fill="white"/>
             <BiMoon className={styles.moon + (isDarkMode ? "" : " " + styles.active)} size="26" fill="black"/>
