@@ -227,11 +227,11 @@
     transition-duration: 0.15s;
   }
   .notActive .searchBox {
-    background-color: transparent !important;
-    color: transparent !important;
+    background-color: transparent;
+    color: transparent;
   }
   .notActive .searchBox::placeholder {
-    color: transparent !important;
+    color: transparent;
   }
   .cartIcon {
     width: 2.5rem;
