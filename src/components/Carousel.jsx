@@ -46,7 +46,7 @@ function CarouselComponent() {
             <div className={styles.caption}>
               <h3>신선한 식품!</h3>
               <p>농장 직배송으로 더욱 신선한 식료품을 만나보세요</p>
-              <Link to='/grocery'>
+              <Link to='/product/grocery'>
                 <Button variant='dark' size='lg'>바로가기 <BsArrowRight/></Button>
               </Link>
             </div>
