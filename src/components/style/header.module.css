@@ -2,8 +2,18 @@
   --hover-dark-bgc: hsl(220, 13%, 69%, 0.2);
   --hover-light-bgc: hsl(215, 28%, 17%, 0.2);
 }
-.navbar a {
+.App_dark.navbar * {
+  color: white;
+}
+.App_light.navbar * {
+  color: black;
+}
+.navbar a,
+.drawer a {
   text-decoration: none;
+}
+*:hover, *:active {
+  color: inherit;
 }
 .navbar {
   position: sticky;
@@ -45,20 +55,12 @@
   transition: flex 0s;
 }
 .navbarBrand {
-  color: black;
   padding: 0;
   margin: 0 0.5rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 700;
   white-space: nowrap;
-}
-.navbarBrand:active,
-.navbarBrand:hover {
-  color: inherit;
-}
-.App_dark .navbarBrand {
-  color: white;
 }
 
 .navbarNav {
@@ -85,14 +87,8 @@
 .navbarNav .navLink:focus-visible {
   outline: black solid 2px;
 }
-.App_dark .navbarNav .navLink {
-  color: white;
-}
 .App_dark .navbarNav .navLink:hover {
   background-color: var(--hover-dark-bgc);
-}
-.App_light .navbarNav .navLink {
-  color: black;
 }
 .App_light .navbarNav .navLink:hover {
   background-color: var(--hover-light-bgc);
@@ -171,7 +167,6 @@
 }
 .App_dark .searchBox {
   background-color: rgba(75, 85, 99, 1);
-  color: white;
   border-width: 0;
 }
 .App_dark .searchBox::placeholder {
@@ -201,6 +196,53 @@
   background-color: var(--hover-dark-bgc);
 }
 .App_light .cartIcon:hover {
+  background-color: var(--hover-light-bgc);
+}
+
+.drawer {
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1025;
+}
+.drawer.active {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.drawerList {
+  width: 20rem;
+  height: 100vh;
+  padding: 1rem;
+  background-color: hsl(220, 18%, 20%, 1);
+  transform: translateX(-30rem);
+}
+.App_dark .drawerList {
+  background-color: hsl(220, 18%, 20%, 1);
+}
+.App_light .drawerList {
+  background-color: white;
+}
+.drawer.active .drawerList {
+  transform: translateX(0rem);
+}
+.drawerItem {
+  list-style: none;
+  width: 100%;
+}
+.drawerCategoryItem {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+}
+.App_dark .drawerCategoryItem:hover {
+  background-color: var(--hover-dark-bgc);
+}
+.App_light .drawerCategoryItem:hover {
   background-color: var(--hover-light-bgc);
 }
 
@@ -236,6 +278,9 @@
   }
   .cartIcon {
     width: 2.5rem;
+  }
+  .drawerList {
+    width: 15rem;
   }
 }
 @media (max-width: 767px) {

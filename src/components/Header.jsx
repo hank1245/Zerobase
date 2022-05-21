@@ -15,6 +15,9 @@ function Header() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [productData, setProductData] = useState()
   const [searchInput, setSearchInput] = useState('')
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const $body = document.getElementsByTagName('body')[0];
 
   useEffect(() => {
     async function fetchData() {
@@ -22,8 +25,7 @@ function Header() {
       setProductData(products.data)
     }
     fetchData()
-  })
-  
+  }, []);
 
   const toggleMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -32,12 +34,22 @@ function Header() {
   const toggleSearchActive = () => {
     setIsSearchActive(!isSearchActive);
   }
+  const drawerOpen = () => {
+    setIsDrawerOpen(true)
+    console.log($body);
+    $body.classList.add('stopScrolling');
+  }
+  const drawerClose = (e) => {
+    if(e.target.classList.contains(styles.drawerList)) return;
+    setIsDrawerOpen(false);
+    $body.classList.remove('stopScrolling');
+  }
 
   return (
   <>
     <nav className={(isDarkMode ? styles.App_dark : styles.App_light) + " " +  styles.navbar}>
       <div className={styles.container}>
-        <button aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation" className={styles.navbarToggler}>
+        <button aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation" className={styles.navbarToggler} onClick={drawerOpen}>
           <GiHamburgerMenu size="24" fill={isDarkMode ? "white" : "black"}/>
         </button>
         <h1 className={styles.brandLogo}>
@@ -77,6 +89,17 @@ function Header() {
             <ShoppingCount count={0}/>
           </Link>
         </div>
+      </div>
+      <div className={styles.drawer + (isDrawerOpen ? " " + styles.active : "")} onClick={drawerClose}>
+        <ul className={styles.drawerList}>
+          {Object.entries(CategoryKR).map((category) => (
+            <li className={styles.drawerItem}>
+              <Link to={`/${category[0]}`} key={`${category[0]}Drawer`} className={styles.drawerCategoryItem}>
+                {category[1]}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   </>

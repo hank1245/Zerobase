@@ -14,17 +14,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
 }
+body.stopScrolling {
+  height: 100%;
+  overflow: hidden;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
+.App_dark, .App_light {
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
+}
 .App_dark {
   background-color: rgb(41, 45, 62);
   color: white;
-  min-height: 100vh;
-  padding-bottom: 200px;
 }
 .App_dark * {
   color: var(--bs-gray-500);
@@ -32,7 +38,6 @@ code {
 .App_light {
   background-color: white;
   color: black;
-  min-height: 100vh;
 }
 
 .carousel img{
