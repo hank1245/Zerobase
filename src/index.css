@@ -25,7 +25,7 @@ code {
 }
 
 .App_dark, .App_light {
-  min-height: 100vh;
+  min-height: 80vh;
   padding-bottom: 2.5rem;
 }
 .App_dark {
