@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import CategoryPage from './pages/CategoryPage';
 import ErrorPage from './pages/ErrorPage';
 import Footer from './components/Footer';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   const isDarkMode = useRecoilValue(darkModeState)
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path= '/' element={<Dashboard/>}/>
         <Route path= '/:category' element={<CategoryPage/>}/> 
+        <Route path="/product/:id" element={<ProductPage />} />
         <Route path = '*' element={<ErrorPage/>}/>
       </Routes>
     </div>
