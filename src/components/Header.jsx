@@ -36,7 +36,6 @@ function Header() {
   }
   const drawerOpen = () => {
     setIsDrawerOpen(true)
-    console.log($body);
     $body.classList.add('stopScrolling');
   }
   const drawerClose = (e) => {
@@ -53,7 +52,7 @@ function Header() {
           <GiHamburgerMenu size="24" fill={isDarkMode ? "white" : "black"}/>
         </button>
         <h1 className={styles.brandLogo}>
-          <a href="/" className={styles.navbarBrand}>React Shop</a>
+          <Link to="/" key="brandLogo" className={styles.navbarBrand}>React Shop</Link>
         </h1>
         <div className={styles.navbarNav + " " + styles.categoryArea}>
           {Object.entries(CategoryKR).map((category) => (

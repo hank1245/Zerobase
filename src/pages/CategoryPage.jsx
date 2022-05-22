@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import {CategoryKR, Category} from "../constants/category";
 import ProductCardList from "../components/ProductsList";
 import styles from '../components/style/productsList.module.css';
+import ErrorPage from '../pages/ErrorPage';
 
 function CategoryPage() {
   const params = useParams();
@@ -21,6 +22,10 @@ function CategoryPage() {
       setCategodyProducts(p.filter((product) => Category[product['category']] === category));
     });
   }, [category]);
+
+  if (!Object.keys(CategoryKR).includes(category)) {
+    return <ErrorPage/>;
+  }
   
   return (
     <section className={styles.categoryContainer}>

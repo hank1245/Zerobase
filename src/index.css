@@ -40,11 +40,7 @@ code {
   color: black;
 }
 
-.carousel img{
-  height: 700px;
-}
-@media (max-width: 1024px) {
-  .carousel img{
-    height: 220px;
-  }
+.carousel-control-prev,
+.carousel-control-next {
+  display: none !important;
 }
