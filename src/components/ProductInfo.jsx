@@ -4,6 +4,9 @@ import {CategoryKR, Category} from "../constants/category";
 import { Button } from 'react-bootstrap';
 import {BsStarFill,BsStarHalf} from 'react-icons/bs';
 import {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import {cartState} from '../atoms/cartItem'
 
 
 
@@ -13,6 +16,7 @@ function ProductInfo(props) {
   const product = props.product;
   const categoryKR = CategoryKR[Category[product['category']]]
   const rating = product.rating;
+  const [cartItem, setCartItem] = useRecoilState(cartState);
   
 
 const StarPush = () => {
@@ -32,10 +36,15 @@ const StarPush = () => {
 }
 const [isBtnActive, setisBtnActive] = useState(false)
 
-  const btnClick = () => {
+  const addCart = () => {
    setisBtnActive(true);
+   localStorage.setItem('cart',JSON.stringify([...cartItem,product]))
+   setCartItem([...cartItem, product])
   }
 
+  const btnClick = () => {
+    setisBtnActive(true)
+  }
 
 
 
@@ -69,8 +78,8 @@ const [isBtnActive, setisBtnActive] = useState(false)
          <p className={styles.price}>${Math.round(product['price'])}</p>
 
          <div className={styles.cardActions}>
-           <Button variant="primary" onClick={()=>btnClick()} className={`${isBtnActive ? "btnAni" : ""}`}>장바구니에 담기</Button>
-           <Button variant="outline-secondary" onClick={()=>btnClick()} className={`${isBtnActive ? "btnAni" : ""}`}>장바구니로 이동</Button>
+           <Button variant="primary" onClick={()=>addCart()} className={`${isBtnActive ? "btnAni" : ""}`}>장바구니에 담기{console.log(cartItem)}</Button>
+           <Link to='/cart'><Button variant="outline-secondary" onClick={()=>btnClick()} className={`${isBtnActive ? "btnAni" : ""}`}>장바구니로 이동</Button></Link>
          </div>
         </div>
       </div>

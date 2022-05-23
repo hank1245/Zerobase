@@ -1,0 +1,68 @@
+.categoryContainer {
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  
+  .breadcrumbs {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0;
+  }
+  .breadcrumbs ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  .breadcrumbs li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  .breadcrumbs li + li::before {
+    content: '';
+    display: block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-color: var(--bs-gray-600);
+    transform: rotate(45deg);
+    margin-left: 0.5rem;
+    margin-right: 0.75rem;
+  }
+
+.productList {
+    display: flex;
+    margin-top: 50px;
+}
+
+.productCards {
+    width: 85%;
+}
+
+.total {
+    font-size: 2rem;
+}
+
+.modal {
+    position: absolute;
+    top:30%;
+    left: 40%;
+    background-color: #242933;
+    padding: 50px;
+    font-size: 1.5rem;
+    border-radius: 20px;
+}
+
+.invisible {
+    display: none;
+}
+
+.noProduct {
+    margin-top: 100px;
+    margin-left: 100px;
+    font-size: 2rem;
+    
+}
