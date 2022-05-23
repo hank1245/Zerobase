@@ -1,17 +1,66 @@
+.carousel img{
+  height: 700px;
+  object-fit: cover;
+}
+
 .caption {
-    position: absolute;
-    top: 40%;
-    left: 15%;
+  position: absolute;
+  max-width: 1360px;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-bottom: 2.5rem;
 }
-
 .caption > h3{
-    font-size: 2.8rem;
-    color: white;
-    font-weight: 800;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: white;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.caption > p {
+  color: white;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.caption > p {
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
+.btnShortcut {
+  height: 3rem;
+  padding: 0 1rem !important;
+  min-height: 3rem;
+  font-size: .875rem !important;
+  font-weight: 600 !important;
+  border: 0 !important;
+}
+.App_light .btnShortcut {
+  background-color: hsl(219, 14%, 28%, 1);
+  color: white;
+}
+.App_dark .btnShortcut {
+  background-color: hsl(218, 18%, 12%, 1);
+  color: hsl(220, 13%, 69%, 1);
+}
+
+@media (max-width: 768px) {
+  .caption {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .carousel img{
+    height: 220px;
+  }
+  .caption > h3{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .btnShortcut {
+    height: 2rem;
+    min-height: 2rem;
+    padding: 0 0.75rem !important;
+  }
 }
