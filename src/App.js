@@ -8,6 +8,7 @@ import CategoryPage from './pages/CategoryPage';
 import ErrorPage from './pages/ErrorPage';
 import Footer from './components/Footer';
 import ProductPage from './pages/ProductPage';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   const isDarkMode = useRecoilValue(darkModeState)
@@ -18,6 +19,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path= '/' element={<Dashboard/>}/>
+        <Route path= '/cart' element={<ShoppingCart/>}/> 
         <Route path= '/:category' element={<CategoryPage/>}/> 
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path = '*' element={<ErrorPage/>}/>
