@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 function ShoppingCart() {
   const [products,setProducts] = useRecoilState(cartState)
-  const totalPrice = Object.keys(products).reduce((prev,cur) => prev + products[cur].price,0)
+  const totalPrice = Object.keys(products).reduce((prev,cur) => prev + (products[cur].price * products[cur].count),0)
   const [isOpen,setIsOpen] = useState(false)
 
 
