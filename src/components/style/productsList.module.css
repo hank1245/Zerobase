@@ -67,6 +67,10 @@
   width: 100%;
 }
 
+.breadcrumbs,
+.breadcrumbs * {
+  transition-duration: 0s;
+}
 .breadcrumbs {
   font-size: 0.875rem;
   line-height: 1.25rem;

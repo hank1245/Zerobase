@@ -2,7 +2,7 @@ import styles from './style/productInfo.module.css';
 import {CategoryKR, Category} from "../constants/category";
 import { Button } from 'react-bootstrap';
 import {BsStarFill,BsStarHalf} from 'react-icons/bs';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import {cartState} from '../atoms/cartItem'
@@ -87,9 +87,9 @@ function ProductInfo(props) {
           <p>{product.description}</p>
 
           <div className={styles.ratingInfo}>
-            <div className={styles.ratingStar}>{rating && StarPush()}</div>
-            <div> {rating && rating['rate']}</div>
-            <div> / {rating ? rating['count'] : ""}명 참여</div>
+            <span className={styles.ratingStar}>{rating && StarPush()}</span>
+            <span> {rating && rating['rate']}</span>
+            <span> / {rating ? rating['count'] : ""}명 참여</span>
           </div>
           
          <p className={styles.price}>${Math.round(product['price'])}</p>
