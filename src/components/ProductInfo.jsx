@@ -2,6 +2,7 @@ import styles from './style/productInfo.module.css';
 import {CategoryKR, Category} from "../constants/category";
 import { Button } from 'react-bootstrap';
 import {BsStarFill,BsStarHalf} from 'react-icons/bs';
+import {BiStar} from 'react-icons/bi';
 import {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
@@ -17,7 +18,7 @@ function ProductInfo(props) {
   const StarPush = () => {
     const stars = []
     let star = rating['rate'];
-
+  
     for(let i = 0; i < 5; i++) {
       if(star > 1){
         stars.push(<BsStarFill fill="yellow" size="1.5rem" key={i}></BsStarFill>)
@@ -25,11 +26,19 @@ function ProductInfo(props) {
       } else if(star >= 0.5) {
         stars.push(<BsStarHalf fill="yellow" size="1.5rem" key={i}></BsStarHalf>)
         star = 0
-      } else stars.push(<BsStarFill fill="gray" size="1.5rem" key={i}></BsStarFill>)
+      } else stars.push(<BiStar fill="yellow"  size="1.5rem" key={i}></BiStar>)
     }
     return stars
   }
-  const [isBtnActive, setisBtnActive] = useState(false)
+  const [isBtnAddActive, setisBtnAddActive] = useState(false)
+  const [isBtnMoveActive, setisBtnMoveActive] = useState(false)
+  
+
+  
+    const moveBtnClick = () => {
+      setisBtnMoveActive(true)
+    }
+  
 
   const isCartItem = (id) => {
     let bool = false;
@@ -41,7 +50,7 @@ function ProductInfo(props) {
 
   const updateCartCount = (id) => {
     const updateCart = cartItem.map((item) => {
-      if (item.id == id) {
+      if (item.id === id) {
         return {...item, ['count']: item.count + 1};
       } else {
         return item;
@@ -52,7 +61,7 @@ function ProductInfo(props) {
   }
 
   const addCart = () => {
-   setisBtnActive(true);
+    setisBtnAddActive(true);
    if (isCartItem(product.id)) {
     updateCartCount(product.id);
    } else {
@@ -62,9 +71,7 @@ function ProductInfo(props) {
    }
   }
 
-  const btnClick = () => {
-    setisBtnActive(true)
-  }
+
 
   return (
     <section >
@@ -94,9 +101,12 @@ function ProductInfo(props) {
           
          <p className={styles.price}>${Math.round(product['price'])}</p>
 
+
+
+
          <div className={styles.cardActions}>
-           <Button variant="primary" onClick={()=>addCart()} className={`${isBtnActive ? "btnAni" : ""}`}>장바구니에 담기{console.log(cartItem)}</Button>
-           <Link to='/cart'><Button variant="outline-secondary" onClick={()=>btnClick()} className={`${isBtnActive ? "btnAni" : ""}`}>장바구니로 이동</Button></Link>
+           <Button variant="primary" onClick={()=>addCart()} className={`${isBtnAddActive ? `${styles.btnAni}` : ""}`}>장바구니에 담기{console.log(cartItem)}</Button>
+           <Link to='/cart'><Button variant="outline-secondary" onClick={()=>moveBtnClick()} className={`${isBtnMoveActive ? `${styles.btnAni}` : ""}`}>장바구니로 이동</Button></Link>
          </div>
         </div>
       </div>
