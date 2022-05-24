@@ -46,7 +46,7 @@ function ItemCard({product}) {
         <img src={product.image} alt={'상품 이미지'} className={styles.productCardImg} />
       </figure>
       <div className={styles.productDetail}>
-        <p><Link to={`/product/${product.id}`}>{product.title}</Link></p>
+        <h2><Link to={`/product/${product.id}`}>{product.title}</Link></h2>
         <p>${Math.round(product.price * product.count)}</p>
         <div className={styles.counter}>
           <div onClick={minus} className={styles.leftbtn}>-</div>
