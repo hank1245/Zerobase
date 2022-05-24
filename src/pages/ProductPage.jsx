@@ -24,7 +24,7 @@ function ProductPage() {
       setselectedProduct(productsDatas[productId -1])
     });
 
-  },[]);
+  },[params]);
 
  
   return (

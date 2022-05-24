@@ -315,6 +315,8 @@
   top:55px;
   right:10px;
   background-color: #292D3E;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .searchList > li {
@@ -331,4 +333,15 @@
 .shopping_list {
   display: flex;
   color: white;
+}
+
+@media(max-width: 481px) {
+  .searchList {
+    position: fixed;
+    left:0;
+    top:110px;
+    max-width:481px;
+    max-height: 500px;
+    overflow: scroll;
+  }
 }

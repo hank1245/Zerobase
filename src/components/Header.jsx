@@ -70,20 +70,21 @@ function Header() {
             <AiOutlineSearch size="24" fill={isDarkMode ? "white" : "black"}/>
           </button>
           <form className={styles.searchArea + " " + (isSearchActive ? styles.active : styles.notActive)}>
-            <input placeholder="검색" aria-label="Search" type="search" className={styles.searchBox} onChange={(e) => setSearchInput(e.target.value)}/>
+            <input placeholder="검색" aria-label="Search" type="search" className={styles.searchBox} onChange={(e) => 
+            setSearchInput(e.target.value)}/>
           </form>
-
           <ul className={styles.searchList}>
-              {productData && productData.filter((val) => {
-                if(searchInput == "") {
-                  return false
-                } else if(val.title.toLowerCase().includes(searchInput.toLowerCase())) {
-                  return val
-                }
-              }).map(product => (
-                <li key={product.id}><Link to={`/product/${product.id}`}>{product.title}</Link></li>
-              ))}
+            {productData && productData.filter((val) => {
+              if(searchInput == "") {
+                return false
+              } else if(val.title.toLowerCase().includes(searchInput.toLowerCase())) {
+                return val
+              }
+            }).map(product => (
+              <li key={product.id}><Link to={`/product/${product.id}`}>{product.title}</Link></li>
+            ))}
           </ul>
+
 
           <Link to={"cart"} key={"cart"} className={styles.cartIcon}>
             <BiShoppingBag size="24" fill={isDarkMode ? "white" : "black"}/>
