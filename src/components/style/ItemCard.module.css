@@ -26,6 +26,13 @@
   font-weight: 600;
   padding-top: 20px;
 }
+.productDetail a {
+  text-decoration: none;
+}
+.productDetail a:hover{
+  text-decoration: underline;
+  color: inherit;
+}
 
 .counter {
   display: flex;

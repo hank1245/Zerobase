@@ -49,3 +49,8 @@ li {
     display: flex;
     justify-content: space-around;
 }
+
+.sns a {
+    color: inherit;
+    text-decoration: none;
+}

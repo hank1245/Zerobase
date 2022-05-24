@@ -87,7 +87,7 @@ function Header() {
 
           <Link to={"cart"} key={"cart"} className={styles.cartIcon}>
             <BiShoppingBag size="24" fill={isDarkMode ? "white" : "black"}/>
-            <ShoppingCount count={0}/>
+            <ShoppingCount/>
           </Link>
         </div>
       </div>

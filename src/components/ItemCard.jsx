@@ -3,6 +3,7 @@ import styles from './style/ItemCard.module.css'
 import {useState} from 'react'
 import { useRecoilState } from 'recoil';
 import {cartState} from '../atoms/cartItem'
+import { Link } from 'react-router-dom';
 
 function ItemCard({product}) {
   const [count, setCount] = useState(product.count)
@@ -50,7 +51,7 @@ function ItemCard({product}) {
         <img src={product.image} alt={'상품 이미지'} className={styles.productCardImg} />
       </figure>
       <div className={styles.productDetail}>
-        <p>{product.title}</p>
+        <p><Link to={`/product/${product.id}`}>{product.title}</Link></p>
         <p>${Math.round(product.price * product.count)}</p>
         <div className={styles.counter}>
           <div onClick={minus} className={styles.leftbtn}>-</div>
