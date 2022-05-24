@@ -133,6 +133,7 @@
 @media (min-width: 1025px) {
   .productList {
     display: flex;
+    justify-content: space-between;
     padding-left: 0;
     padding-right: 0;
   }

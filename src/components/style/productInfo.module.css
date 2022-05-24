@@ -141,7 +141,7 @@
     gap: 0.5rem;
   }
   
-  .btnAni {
+  .btnAni:active {
     animation: click 0.5s linear ;
   }
   

@@ -30,15 +30,6 @@ function ProductInfo(props) {
     }
     return stars
   }
-  const [isBtnAddActive, setisBtnAddActive] = useState(false)
-  const [isBtnMoveActive, setisBtnMoveActive] = useState(false)
-  
-
-  
-    const moveBtnClick = () => {
-      setisBtnMoveActive(true)
-    }
-  
 
   const isCartItem = (id) => {
     let bool = false;
@@ -61,7 +52,6 @@ function ProductInfo(props) {
   }
 
   const addCart = () => {
-    setisBtnAddActive(true);
    if (isCartItem(product.id)) {
     updateCartCount(product.id);
    } else {
@@ -105,8 +95,8 @@ function ProductInfo(props) {
 
 
          <div className={styles.cardActions}>
-           <Button variant="primary" onClick={()=>addCart()} className={`${isBtnAddActive ? `${styles.btnAni}` : ""}`}>장바구니에 담기{console.log(cartItem)}</Button>
-           <Link to='/cart'><Button variant="outline-secondary" onClick={()=>moveBtnClick()} className={`${isBtnMoveActive ? `${styles.btnAni}` : ""}`}>장바구니로 이동</Button></Link>
+           <Button variant="primary" onClick={()=>addCart()} className={styles.btnAni}>장바구니에 담기{console.log(cartItem)}</Button>
+           <Link to='/cart'><Button variant="outline-secondary" className={styles.btnAni}>장바구니로 이동</Button></Link>
          </div>
         </div>
       </div>
