@@ -20,9 +20,9 @@ function Footer() {
                 <li><img src='/icons/discover.svg' alt="discover"/></li>
             </ul>
             <div className={styles.sns}>
-                <BsFacebook size='36'/>
-                <BsInstagram size='36'/>
-                <BsGithub size='36'/>
+                <a href='https://www.facebook.com'><BsFacebook size='36'/></a>
+                <a href='https://www.instagram.com'><BsInstagram size='36'/></a>
+                <a href='https://www.github.com'><BsGithub size='36'/></a>
             </div>
             <p>CopyRight <BiCopyright/> 2022 Zero Base</p>
         </footer>

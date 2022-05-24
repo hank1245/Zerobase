@@ -1,5 +1,5 @@
 import styles from './style/productsList.module.css';
-import ProductCard from "../components/ProductCard";
+import ProductCard from "./ProductCard";
 import {Link} from "react-router-dom";
 import {useRecoilValue} from 'recoil';
 import {darkModeState} from "../atoms/darkMode";

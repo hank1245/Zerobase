@@ -72,6 +72,7 @@ function Header() {
           <form className={styles.searchArea + " " + (isSearchActive ? styles.active : styles.notActive)}>
             <input placeholder="검색" aria-label="Search" type="search" className={styles.searchBox} onChange={(e) => setSearchInput(e.target.value)}/>
           </form>
+
           <ul className={styles.searchList}>
               {productData && productData.filter((val) => {
                 if(searchInput == "") {
@@ -80,9 +81,10 @@ function Header() {
                   return val
                 }
               }).map(product => (
-                <li key={product.id}><Link to={`/products/${product.id}`}>{product.title}</Link></li>
+                <li key={product.id}><Link to={`/product/${product.id}`}>{product.title}</Link></li>
               ))}
-            </ul>
+          </ul>
+
           <Link to={"cart"} key={"cart"} className={styles.cartIcon}>
             <BiShoppingBag size="24" fill={isDarkMode ? "white" : "black"}/>
             <ShoppingCount count={0}/>
