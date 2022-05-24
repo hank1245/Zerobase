@@ -14,7 +14,7 @@ function ProductCard(props) {
       </figure>
       <div className={styles.productCardInfoBox}>
         <p className={styles.cardTitle}>{product['title']}</p>
-        <p className={styles.cardCost}>${product['price']}</p>
+        <p className={styles.cardCost}>${Math.round(product['price'])}</p>
       </div>
     </div>
   )

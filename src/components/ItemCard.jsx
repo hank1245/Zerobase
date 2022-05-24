@@ -21,15 +21,27 @@ function ItemCard({product}) {
     setCount(count + n);
     product['count'] = count;
   }
+  const deleteCartItem = (id) => {
+    let deleteItem = [];
+    cartItem.forEach((item) => {
+      if (item.id !== id) {
+        deleteItem.push(item);
+      }
+    });
+    localStorage.setItem('cart', JSON.stringify(deleteItem))
+    setCartItem(deleteItem);
+    setCount(0);
+  }
   
   const plus = () => {
-    updateCartCount(product.id, 1)
+    updateCartCount(product.id, 1);
   }
   const minus = () => {
     if(count < 2){
-      return
+      deleteCartItem(product.id);
+      return;
     }
-    updateCartCount(product.id, -1)
+    updateCartCount(product.id, -1);
   }
 
   return (
