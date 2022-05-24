@@ -64,6 +64,7 @@
 .navbarNav {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 .navbarNav.categoryArea {
   margin-left: 0.5rem;
@@ -311,7 +312,7 @@
 
 .searchList {
   position:absolute;
-  top:63px;
+  top:55px;
   right:10px;
   background-color: #292D3E;
 }
