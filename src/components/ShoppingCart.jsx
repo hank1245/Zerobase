@@ -49,7 +49,7 @@ function ShoppingCart() {
       </div>
       <div className={styles.productList}>
         <div className={styles.productCards}>
-          {products.map(product => (<ItemCard product={product} />))}
+          {products.map(product => (<ItemCard product={product} key={product.title}/>))}
         </div>
         <div className={styles.total}>
           <p>총: ${Math.round(totalPrice)}</p>

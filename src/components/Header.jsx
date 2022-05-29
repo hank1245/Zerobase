@@ -95,8 +95,8 @@ function Header() {
       <div className={styles.drawer + (isDrawerOpen ? " " + styles.active : "")} onClick={drawerClose}>
         <ul className={styles.drawerList}>
           {Object.entries(CategoryKR).map((category) => (
-            <li className={styles.drawerItem}>
-              <Link to={`/${category[0]}`} key={`${category[0]}Drawer`} className={styles.drawerCategoryItem}>
+            <li className={styles.drawerItem} key={`${category[0]}Drawer`}>
+              <Link to={`/${category[0]}`} className={styles.drawerCategoryItem}>
                 {category[1]}
               </Link>
             </li>
