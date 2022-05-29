@@ -222,6 +222,22 @@
   border-radius: 0.5rem;
   flex-shrink: 0;
 }
+
+.cartIcon > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  border-radius: 50%;;
+  color: white;
+  position: absolute;
+  left: 25px;
+  top: 8px;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+}
+
 .App_dark .cartIcon:hover {
   background-color: var(--hover-dark-bgc);
 }

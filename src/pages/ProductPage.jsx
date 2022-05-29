@@ -2,7 +2,6 @@ import styles from '../components/style/productInfo.module.css';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
-import {useRecoilState} from 'recoil';
 import ProductInfo from '../components/ProductInfo'
 
 

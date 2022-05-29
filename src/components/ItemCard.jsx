@@ -1,43 +1,40 @@
 import React from 'react'
 import styles from './style/ItemCard.module.css'
-import { useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil'
 import {cartState} from '../atoms/cartItem'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 function ItemCard({product}) {
   const [cartItem, setCartItem] = useRecoilState(cartState);
   
   const updateCartCount = (id, n) => {
-    const updateCart = cartItem.map((item) => {
-      if (item.id == id) {
-        return {...item, ['count']: item.count + n};
+    const updatedCart = cartItem.map((item) => {
+      if (item.id === id) {
+        return {...item, count: item.count + n}
       } else {
-        return item;
+        return item
       }
     });
-    localStorage.setItem('cart', JSON.stringify(updateCart))
-    setCartItem(updateCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+    setCartItem(updatedCart)
   }
+
   const deleteCartItem = (id) => {
-    let deleteItem = [];
-    cartItem.forEach((item) => {
-      if (item.id !== id) {
-        deleteItem.push(item);
-      }
-    });
-    localStorage.setItem('cart', JSON.stringify(deleteItem))
-    setCartItem(deleteItem);
+    let newItemList = cartItem.filter(item =>item.id !==id )
+    localStorage.setItem('cart', JSON.stringify(newItemList))
+    setCartItem(newItemList)
   }
   
   const plus = () => {
-    updateCartCount(product.id, 1);
+    updateCartCount(product.id, 1)
   }
+
   const minus = () => {
     if(product.count < 2){
-      deleteCartItem(product.id);
+      deleteCartItem(product.id)
       return;
     }
-    updateCartCount(product.id, -1);
+    updateCartCount(product.id, -1)
   }
 
   return (

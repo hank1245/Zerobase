@@ -1,23 +1,23 @@
-import {BiSun, BiMoon, BiShoppingBag} from 'react-icons/bi';
-import {GiHamburgerMenu} from 'react-icons/gi';
-import {AiOutlineSearch} from 'react-icons/ai';
-import {useRecoilState} from 'recoil';
-import {darkModeState} from "../atoms/darkMode";
-import styles from './style/header.module.css';
-import {useState, useEffect} from 'react';
-import {Link} from "react-router-dom";
-import {CategoryKR} from "../constants/category";
-import axios from 'axios';
+import {BiSun, BiMoon, BiShoppingBag} from 'react-icons/bi'
+import {GiHamburgerMenu} from 'react-icons/gi'
+import {AiOutlineSearch} from 'react-icons/ai'
+import {useRecoilState} from 'recoil'
+import {darkModeState} from "../atoms/darkMode"
+import styles from './style/header.module.css'
+import {useState, useEffect} from 'react'
+import {Link} from "react-router-dom"
+import {CategoryKR} from "../constants/category"
+import axios from 'axios'
 import ShoppingCount from './ShoppingCount'
 
 function Header() {
-  const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
-  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState)
+  const [isSearchActive, setIsSearchActive] = useState(false)
   const [productData, setProductData] = useState()
   const [searchInput, setSearchInput] = useState('')
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
-  const $body = document.getElementsByTagName('body')[0];
+  const $body = document.getElementsByTagName('body')[0]
 
   useEffect(() => {
     async function fetchData() {
@@ -30,7 +30,7 @@ function Header() {
   const toggleMode = () => {
     setIsDarkMode(!isDarkMode);
     localStorage.setItem('reactShopIsDarkMode', !isDarkMode);
-  };
+  }
   const toggleSearchActive = () => {
     setIsSearchActive(!isSearchActive);
   }
@@ -41,7 +41,7 @@ function Header() {
   const drawerClose = (e) => {
     if(e.target.classList.contains(styles.drawerList)) return;
     setIsDrawerOpen(false);
-    $body.classList.remove('stopScrolling');
+    $body.classList.remove('stopScrolling')
   }
 
   return (
@@ -75,7 +75,7 @@ function Header() {
             
             <ul className={styles.searchList}>
               {productData && productData.filter((val) => {
-                if(searchInput == "") {
+                if(searchInput === "") {
                   return false
                 } else if(val.title.toLowerCase().includes(searchInput.toLowerCase())) {
                   return val
