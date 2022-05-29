@@ -1,9 +1,9 @@
 .align_center {
-    width: 800px;
+    max-width: 800px;
     margin: 10% auto;
     text-align: center;
 }
-.align_center >h1 {
+.align_center > h1 {
     font-size: 8rem;
     font-weight: 800;
     color: lightgray;
