@@ -120,9 +120,8 @@
 
 .noProduct {
   margin-top: 100px;
-  margin-left: 100px;
+  text-align: center;
   font-size: 2rem;
-  
 }
 
 @media (min-width: 768px) {
