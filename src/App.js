@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <div className={isDarkMode ? "App_dark" : "App_light"} onClick={searchListClose} id='app' >
+      <div className={isDarkMode ? "App_dark" : "App_light"} onClick={searchListClose} >
         <Header />
         <ScrollToTop />
         <Routes>
