@@ -14,14 +14,10 @@ function ShoppingCart() {
   const totalPrice = Object.keys(products).reduce((prev,cur) => prev + (products[cur].price * products[cur].count),0)
   const [isOpen,setIsOpen] = useState(false)
 
-  const $body = document.getElementsByTagName('body')[0];
-
   const openModal = () => {
-    $body.classList.add('stopScrolling');
     setIsOpen(true)
   }
   const closeModal = () => {
-    $body.classList.remove('stopScrolling');
     setIsOpen(false)
   }
   const closeModalAndDelete = () => {
