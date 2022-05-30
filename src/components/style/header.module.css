@@ -195,6 +195,10 @@
   overflow-y: scroll;
   padding: 0;
   margin: 0;
+  visibility: hidden;
+}
+.searchList.open {
+  visibility: visible;
 }
 .App_light .searchList {
   background-color: rgba(209, 213, 219, 1);

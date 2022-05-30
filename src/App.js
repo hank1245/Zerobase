@@ -1,7 +1,9 @@
 import "./App.css";
+import styles from './components/style/header.module.css';
 import { Routes, Route } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { darkModeState } from "./atoms/darkMode";
+import {searchListOpen} from './atoms/searchListOpen';
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import CategoryPage from "./pages/CategoryPage";
@@ -13,10 +15,16 @@ import ScrollToTop from "./components/ScrollRestoration";
 
 function App() {
   const isDarkMode = useRecoilValue(darkModeState);
+  const setIsSearchListOpen = useSetRecoilState(searchListOpen);
+
+  const searchListClose = (e) => {
+    if (e.target.classList.contains(styles.searchBox) || e.target.classList.contains(styles.searchList)) return;
+    setIsSearchListOpen(false);
+  }
 
   return (
     <>
-      <div className={isDarkMode ? "App_dark" : "App_light"}>
+      <div className={isDarkMode ? "App_dark" : "App_light"} onClick={searchListClose}>
         <Header />
         <ScrollToTop />
         <Routes>

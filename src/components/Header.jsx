@@ -3,6 +3,7 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {useRecoilState} from 'recoil'
 import {darkModeState} from "../atoms/darkMode"
+import {searchListOpen} from '../atoms/searchListOpen';
 import styles from './style/header.module.css'
 import {useState, useEffect} from 'react'
 import {Link} from "react-router-dom"
@@ -11,21 +12,27 @@ import axios from 'axios'
 import ShoppingCount from './ShoppingCount'
 
 function Header() {
-  const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState)
-  const [isSearchActive, setIsSearchActive] = useState(false)
-  const [productData, setProductData] = useState()
-  const [searchInput, setSearchInput] = useState('')
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
+  const [isSearchListOpen, setIsSearchListOpen] = useRecoilState(searchListOpen);
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [productData, setProductData] = useState();
+  const [searchInput, setSearchInput] = useState('');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const $body = document.getElementsByTagName('body')[0]
+  const $body = document.getElementsByTagName('body')[0];
+  const $searchBox = document.getElementsByClassName(styles.searchBox)[0];
 
   useEffect(() => {
     async function fetchData() {
-      const products = await axios.get('/products.json')
-      setProductData(products.data)
+      const products = await axios.get('/products.json');
+      setProductData(products.data);
     }
-    fetchData()
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    $searchBox.value=""
+  }, [document.location.href]);
 
   const toggleMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -35,13 +42,13 @@ function Header() {
     setIsSearchActive(!isSearchActive);
   }
   const drawerOpen = () => {
-    setIsDrawerOpen(true)
+    setIsDrawerOpen(true);
     $body.classList.add('stopScrolling');
   }
   const drawerClose = (e) => {
     if(e.target.classList.contains(styles.drawerList)) return;
     setIsDrawerOpen(false);
-    $body.classList.remove('stopScrolling')
+    $body.classList.remove('stopScrolling');
   }
 
   return (
@@ -71,9 +78,9 @@ function Header() {
           </button>
           <form className={styles.searchArea + " " + (isSearchActive ? styles.active : styles.notActive)}>
             <input placeholder="검색" aria-label="Search" type="search" className={styles.searchBox} onChange={(e) => 
-            setSearchInput(e.target.value)}/>
+            setSearchInput(e.target.value)} onClick={() => {setIsSearchListOpen(true)}}/>
             
-            <ul className={styles.searchList}>
+            <ul className={styles.searchList + (isSearchListOpen ? " " + styles.open : "")}>
               {productData && productData.filter((val) => {
                 if(searchInput === "") {
                   return false
