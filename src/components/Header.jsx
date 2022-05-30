@@ -10,6 +10,7 @@ import {Link} from "react-router-dom"
 import {CategoryKR} from "../constants/category"
 import axios from 'axios'
 import ShoppingCount from './ShoppingCount'
+import { useLocation } from "react-router-dom"
 
 function Header() {
   const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
@@ -20,7 +21,7 @@ function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const $body = document.getElementsByTagName('body')[0];
-  const $searchBox = document.getElementsByClassName(styles.searchBox)[0];
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchData() {
@@ -31,8 +32,10 @@ function Header() {
   }, []);
 
   useEffect(() => {
+    const $searchBox = document.getElementsByClassName(styles.searchBox)[0];
     $searchBox.value=""
-  }, [document.location.href]);
+    setSearchInput("")
+  }, [location.pathname]);
 
   const toggleMode = () => {
     setIsDarkMode(!isDarkMode);
