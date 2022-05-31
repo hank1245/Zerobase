@@ -14,7 +14,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
 }
-
+body.stopScrolling {
+  height: 100%;
+  overflow: hidden;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

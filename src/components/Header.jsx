@@ -20,6 +20,7 @@ function Header() {
   const [searchInput, setSearchInput] = useState('');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  const $body = document.getElementsByTagName('body')[0];
   const $app = document.querySelector('#app')
   const location = useLocation();
 
@@ -46,10 +47,12 @@ function Header() {
   }
   const drawerOpen = () => {
     setIsDrawerOpen(true);
+    $body.classList.add('stopScrolling');
   }
   const drawerClose = (e) => {
     if(e.target.classList.contains(styles.drawerList)) return;
     setIsDrawerOpen(false);
+    $body.classList.remove('stopScrolling');
   }
 
   return (
